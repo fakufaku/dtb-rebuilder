@@ -1,0 +1,80 @@
+/*
+ * Copyright (C) 2012 Texas Instruments Incorporated - http://www.ti.com/
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 as
+ * published by the Free Software Foundation.
+ */
+
+&ocp {
+	P9_17_pinmux {
+		mode = "i2c";
+	};
+	P9_18_pinmux {
+		mode = "i2c";
+	};
+
+	/* The following are disabled because the audio mode is set
+	   by <&mcasp0_pins_sta321mp>. */
+	P9_27_pinmux {
+		/* mcasp0_fsr, INPUT | MODE0, Codec WCLK */
+		status = "disabled";
+	};
+	P9_28_pinmux {
+		/* mcasp0_axr2, INPUT | MODE2, Codec DIN */
+		status = "disabled";
+	};
+	P9_30_pinmux {
+		/* mcasp0_axr0, INPUT | MODE0, Codec DIN */
+		status = "disabled";
+	};
+	P9_41B_pinmux {
+		/* mcasp0_axr1, INPUT | MODE0, Codec DOUT */
+		status = "disabled";
+	};
+	P9_42B_pinmux {
+		/* mcasp0_aclkr, INPUT | MODE0, Codec DIN */
+		status = "disabled";
+	};
+};
+
+&i2c2 {
+			clock-frequency = <100000>;
+			status = "okay";
+			pinctrl-names = "default";
+			pinctrl-0 = <&i2c1_pins>;
+
+			sta321mp: sta321mp@20 {
+				compatible = "ti,sta321mp";
+				reg = <0x20>;
+				status = "okay";
+			};
+};
+
+&mcasp0 {
+  pinctrl-names = "default";
+  pinctrl-0 = <&mcasp0_pins_sta321mp>;
+
+  status = "okay";
+
+  op-mode = <0>;          /* MCASP_IIS_MODE */
+  tdm-slots = <2>;
+  num-serializer = <16>;
+  serial-dir = <  /* 0: INACTIVE, 1: TX, 2: RX */
+    2 2 2 0
+    0 0 0 0
+    0 0 0 0
+    0 0 0 0
+  >;
+  tx-num-evt = <1>;
+  rx-num-evt = <1>;
+};
+
+/ {
+	sound {
+    compatible = "ti,beaglebone-black-sta321mp";
+    ti,model = "STA321MP EVM";
+    ti,audio-codec = <&sta321mp>;
+    ti,mcasp-controller = <&mcasp0>;
+	};
+};
