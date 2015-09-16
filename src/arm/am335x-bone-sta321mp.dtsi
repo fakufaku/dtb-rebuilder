@@ -16,8 +16,8 @@
 
 	/* The following are disabled because the audio mode is set
 	   by <&mcasp0_pins_sta321mp>. */
-	P9_27_pinmux {
-		/* mcasp0_fsr, INPUT | MODE0, Codec WCLK */
+	P9_29_pinmux {
+		/* mcasp0_fsx, INPUT | MODE0, Codec WCLK */
 		status = "disabled";
 	};
 	P9_28_pinmux {
@@ -32,8 +32,8 @@
 		/* mcasp0_axr3, INPUT | MODE2, Codec DOUT */
 		status = "disabled";
 	};
-	P9_12_pinmux {
-		/* mcasp0_aclkr_mux, INPUT | MODE6, Codec DIN */
+	P9_31_pinmux {
+		/* mcasp0_aclkx_mux, INPUT | MODE0, Codec DIN */
 		status = "disabled";
 	};
 };
