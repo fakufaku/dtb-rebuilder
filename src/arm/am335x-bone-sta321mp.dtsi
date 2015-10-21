@@ -16,24 +16,24 @@
 
 	/* The following are disabled because the audio mode is set
 	   by <&mcasp0_pins_sta321mp>. */
+	P9_27_pinmux {
+		/* mcasp0_axr3, INPUT | MODE2, Codec SDO56 */
+		status = "disabled";
+	};
+	P9_28_pinmux {
+		/* mcasp0_axr2, INPUT | MODE2, Codec SDO34 */
+		status = "disabled";
+	};
 	P9_29_pinmux {
 		/* mcasp0_fsx, INPUT | MODE0, Codec WCLK */
 		status = "disabled";
 	};
-	P9_28_pinmux {
-		/* mcasp0_axr2, INPUT | MODE2, Codec DIN */
-		status = "disabled";
-	};
 	P9_30_pinmux {
-		/* mcasp0_axr0, INPUT | MODE0, Codec DIN */
-		status = "disabled";
-	};
-	P9_25_pinmux {
-		/* mcasp0_axr3, INPUT | MODE2, Codec DOUT */
+		/* mcasp0_axr0, INPUT | MODE0, Codec SDO12 */
 		status = "disabled";
 	};
 	P9_31_pinmux {
-		/* mcasp0_aclkx_mux, INPUT | MODE0, Codec DIN */
+		/* mcasp0_aclkx, INPUT | MODE0, Codec BCLK */
 		status = "disabled";
 	};
 };
@@ -49,6 +49,21 @@
 		reg = <0x20>;
 		status = "okay";
 	};
+
+        /* MCP79410 RTC module */
+        rtc@68 {
+	        compatible = "maxim,ds1338";
+	        reg = <0x68>;
+                status = "okay";
+        };
+
+        /* TMP275 Temperature sensor module */
+        temp@48 {
+	        compatible = "ti,tmp275";
+	        reg = <0x48>;
+                status = "okay";
+        };
+
 };
 
 &mcasp0 {
