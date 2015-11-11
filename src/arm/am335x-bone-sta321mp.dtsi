@@ -91,6 +91,6 @@
 		ti,model = "STA321MP EVM";
 		ti,audio-codec = <&sta321mp>;
 		ti,mcasp-controller = <&mcasp0>;
-		ti,codec-clock-rate = <2822400>;
+		ti,codec-clock-rate = <24000000>;
 	};
 };
