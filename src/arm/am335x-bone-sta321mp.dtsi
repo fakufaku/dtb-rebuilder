@@ -51,11 +51,13 @@
 	};
 
         /* MCP79410 RTC module */
+	/*
         rtc@68 {
 	        compatible = "maxim,ds1338";
 	        reg = <0x68>;
                 status = "okay";
         };
+	*/
 
         /* TMP275 Temperature sensor module */
         temp@48 {
